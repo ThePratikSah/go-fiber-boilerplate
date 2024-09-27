@@ -1,6 +1,8 @@
 package controller
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+)
 
 func CreateUser(c *fiber.Ctx) error {
 
@@ -8,7 +10,6 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 func GetUsers(c *fiber.Ctx) error {
-
 	return c.SendString("Get Users")
 }
 

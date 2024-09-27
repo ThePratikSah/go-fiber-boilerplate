@@ -5,10 +5,12 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func UserRoutes(app *fiber.App) {
-	app.Get("/users", controller.GetUsers)
-	app.Get("/users/:id", controller.GetUser)
-	app.Post("/users", controller.CreateUser)
-	app.Put("/users/:id", controller.UpdateUser)
-	app.Delete("/users/:id", controller.DeleteUser)
+func UserRoutes(app fiber.Router) {
+	app.Route("/users", func(router fiber.Router) {
+		router.Get("/", controller.GetUsers)
+		router.Get("/:id", controller.GetUser)
+		router.Post("/", controller.CreateUser)
+		router.Put("/:id", controller.UpdateUser)
+		router.Delete("/:id", controller.DeleteUser)
+	})
 }
