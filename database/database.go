@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/ThePratikSah/silent-flag/config"
+	"github.com/ThePratikSah/silent-flag/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -50,6 +51,9 @@ func ConnectDb() {
 
 	log.Println("connected")
 	db.Logger = logger.Default.LogMode(logger.Info)
+
+	log.Println("Running Migrations")
+	db.AutoMigrate(&model.User{})
 
 	DB = Dbinstance{
 		Db: db,
